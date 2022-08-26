@@ -1,0 +1,20 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-image:url(https://www.slidesalad.com/wp-content/uploads/2019/06/Social-Media-Free-Download-PowerPoint-Templates-PPT-Slides-001.jpg);
+    
+}
+
+.dialogsItems {
+    padding: 10px;
+    
+}
+
+.dialog.active{
+    color:honeydew;
+}
+.messages {
+    padding: 10px;
+}
+
+/* .messges.message {} */
