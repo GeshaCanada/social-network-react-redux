@@ -1,38 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import S from './Dialogs.module.css'
+import DialogItem from './Dialogitem/Dialogitem';
+import Message from './Message/Message';
 
-const DialogItem = (props) => {
 
-    let path = '/dialogs/' + props.id;
 
-    return <div className={S.dialog + ' ' + S.active}>
-        <NavLink to={path}>{props.name}</NavLink>
-    </div>
-}
 
-const Message = (props) => {
-    return <div className={S.dialog}>{props.message}</div>
-}
 
 const Dialogs = (props) => {
+
+    let dialogsElement = props.state.dialogs
+        .map(d => <DialogItem name={d.name} id={d.id} />)// Arrow function will call 6 times matching qty elements array
+    let messagesElements = props.state.messages
+        .map(m => <Message message={m.message} />)
+       
     return (
         <div className={S.dialogs}>
             <div className={S.dialogsItems}>
-                <DialogItem name='Gennadii' id='1' />
-                <DialogItem name='Anastasia' id='2' />
-                <DialogItem name='React' id='3' />
-                <DialogItem name='Victoria' id='4' />
-                <DialogItem name='Daniel' id='5' />
-                <DialogItem name='Sofia' id='6' />
+                {dialogsElement}
             </div>
 
             <div className={S.messages}>
-                <Message message='Hello!' />
-                <Message message='How is going your React project?' />
-                <Message message='Yoo))' />
-                <Message message='Yoo))' />
-                <Message message='Yoo))' />
+                {messagesElements}
             </div>
         </div>
 

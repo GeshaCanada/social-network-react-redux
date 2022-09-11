@@ -7,8 +7,7 @@ const Profile = (props) => {
     return (
         <div>
             <ProfileInfo />
-
-            <MyPosts />
+            <MyPosts posts={props.state.posts} /> {/*retranslate data from Profile.jsx props to My.posts  */}
         </div>
     )
 
