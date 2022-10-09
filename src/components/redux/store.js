@@ -1,4 +1,4 @@
-import dialogsReducer from "./dialogs-reducer"
+/*import dialogsReducer from "./dialogs-reducer"
 import profileReducer from "./profile-reducer"
 import sidebarReducer from "./sidebar-reducer."
 
@@ -67,4 +67,4 @@ window.store = store
 export default store
 
 
-// store OOP
+// store OOP */
