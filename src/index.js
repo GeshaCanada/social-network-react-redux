@@ -8,14 +8,13 @@ import reportWebVitals from './reportWebVitals';
 
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')); 
 
 let rerenderEntireTree = (state) => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App state={state} addPost={store.addPost.bind(store)} 
-             updateNewPostText={store.updateNewPostText.bind(store)} />
+        <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
       </React.StrictMode>
     </BrowserRouter>
   );
@@ -28,3 +27,7 @@ store.subscribe(rerenderEntireTree);
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+
+

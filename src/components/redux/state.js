@@ -1,8 +1,8 @@
-let store = {                            // store OOP
-   
-    getState() {
-        return this._state
-    },
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+import sidebarReducer from "./sidebar-reducer."
+
+let store = {
 
     _state: {
 
@@ -29,38 +29,42 @@ let store = {                            // store OOP
                 { id: 2, message: 'How is going your React project?' },
                 { id: 3, message: 'Yoo))' },
                 { id: 4, message: 'Yoo))' },
-                { id: 5, message: 'Yoo))' },
-                { id: 6, message: 'Yoo))' }
-            ]
-        }
+                { id: 5, message: 'Yoo))' }
+
+            ],
+            newMessageBody: ''
+        },
+        sidebar: {},
     },
-    
+
     _callSubscriber() {
         console.log('state changed')
     },
-    
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
 
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber(this._state)
+    getState() {
+        return this._state
     },
 
     subscribe(observer) {
         this._callSubscriber = observer         // observer patern
-    }
+    },
 
+    // method which change state:
+
+    dispatch(action) {
+
+        this._state.profilePage = profileReducer (this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer (this._state.dialogsPage, action)
+        this._state.sidebar = sidebarReducer (this._state.sidebar, action)
+
+        this._callSubscriber (this._state)
+    }
 }
+
+window.store = store
+
 
 export default store
 
-window.store = store
+
+// store OOP
