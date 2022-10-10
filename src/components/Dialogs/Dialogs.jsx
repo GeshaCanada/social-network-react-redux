@@ -2,15 +2,10 @@ import React from 'react';
 import S from './Dialogs.module.css'
 import DialogItem from './Dialogitem/Dialogitem';
 import Message from './Message/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../redux/dialogs-reducer'
-
-
-
-
 
 const Dialogs = (props) => {
     
-    let state = props.store.getState().dialogsPage
+    let state = props.dialogsPage
 
     let dialogsElement = state.dialogs
         .map(d => <DialogItem name={d.name} id={d.id} />)// Arrow function will call 6 times matching qty elements array
@@ -21,11 +16,11 @@ const Dialogs = (props) => {
 
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     }
     let onNewMessageChange = (e) => {     // e - event
        let body = e.target.value
-       props.store.dispatch(updateNewMessageBodyCreator(body))
+       props.updateNewMessageBody(body)
     }
 
     return (
