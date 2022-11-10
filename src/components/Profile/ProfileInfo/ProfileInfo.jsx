@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={S.descriptionBlock}>
                 <img src={props.profile.photos.large} />
-                 avatar
+                avatar
             </div>
         </div>
     )
