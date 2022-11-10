@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
@@ -18,20 +18,20 @@ const App = () => {
             <Navbar />
             <div className='app-wrapper-content'>
 
-                <Routes>
-                    <Route path='/profile/*'
-                        element={<ProfileContainer/>} />
-                    <Route path='/dialogs/*'
-                        element={<DialogsContainer/>} /> 
-                    <Route path='/users'
-                        element={<UsersContainer/>} /> 
-                    <Route path='/news'
-                        element={<News />} />
-                    <Route path='/music'
-                        element={<Music />} />
-                    <Route path='/settings'
-                        element={<Settings />} />
-                </Routes>
+
+                <Route path='/profile' 
+                    render={() => <ProfileContainer />} />
+                <Route path='/dialogs'
+                    render={() => <DialogsContainer />} />
+                <Route path='/users'
+                    render={() => <UsersContainer />} />
+                <Route path='/news'
+                    render={() => <News />} />
+                <Route path='/music'
+                    render={() => <Music />} />
+                <Route path='/settings'
+                    render={() => <Settings />} />
+
 
             </div>
         </div>
