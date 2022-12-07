@@ -3,8 +3,6 @@ import S from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 
-import { followUser, unFollowUser } from "../../api/api";
-import { follow, unfollow } from "../redux/users-reducer";
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -41,26 +39,11 @@ const Users = (props) => {
             </div>
             <div>
               {u.followed
-                ? <button onClick={() => {
+                ? <button onClick={() => { props.unfollow(u.id) }}>
+                  Unfollow</button>
 
-                  unFollowUser(u)
-                    .then(data => {
-                      if (data.resultCode == 0) {
-                        props.unfollow(u.id)
-                      }
-                    })
-
-                }}>Unfollow</button>
-                : <button onClick={() => {
-
-                  followUser(u)
-                    .then(data => {
-                      if (data.resultCode == 0) {
-                        props.follow(u.id)
-                      }
-                    })
-
-                }}>Follow</button>}
+                : <button onClick={() => { props.follow(u.id) }}>
+                  Follow</button>}
 
             </div>
           </span>
