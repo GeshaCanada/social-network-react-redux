@@ -9,13 +9,14 @@ import { usersAPI } from '../../api/api'
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        
+
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = 2
         }
-       
-            usersAPI.getProfile(userId).then(response => {
+
+        usersAPI.getProfile(userId)
+            .then(response => {
                 this.props.setUserProfile(response.data)
             })
     }
